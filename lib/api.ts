@@ -9,6 +9,14 @@ type Company = {
   createdAt: string
 }
 
+type Station = {
+  id: string
+  name: string
+  location: string
+  companyId: string
+  createdAt: string
+}
+
 export class ApiClient {
   private baseURL: string
 
@@ -109,7 +117,7 @@ export class ApiClient {
 
   // Station API methods (assuming similar structure)
   async getStations() {
-    return this.request('/station/all')
+    return this.request<Station[]>('/station/all')
   }
 
   async getStation(id: string) {
