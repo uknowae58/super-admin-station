@@ -1,0 +1,11 @@
+{ companies(à remplacer par inspecteur)
+    email:snedai@sndeai.com,
+    password:FAFvxaYEPe$4
+}
+
+{ Manager:
+    email: aedev7@gmail.com,
+    password: oAXpQhS92O#M
+
+
+}
