@@ -127,7 +127,7 @@ const columns: ColumnDef<Company>[] = [
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(company.id)
-                  toast.success("ID de l'entreprise copié !", {
+                  toast.success("ID de l'Companie copié !", {
                     duration: 2000,
                   })
                 } catch (error) {
@@ -137,11 +137,11 @@ const columns: ColumnDef<Company>[] = [
                 }
               }}
             >
-              Copier l'ID de l'entreprise
+              Copier l'ID de l'Companie
             </DropdownMenuItem>
-            <DropdownMenuItem>Modifier l'entreprise</DropdownMenuItem>
+            <DropdownMenuItem>Modifier l'Companie</DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">
-              Supprimer l'entreprise
+              Supprimer l'Companie
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -202,24 +202,24 @@ export default function CompaniesPage() {
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Entreprises</BreadcrumbPage>
+                <BreadcrumbPage>Companies</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold">Entreprises</h1>
+            <h1 className="text-3xl font-bold">Companies</h1>
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <Button>
                   <Plus className="mr-2 h-4 w-4" />
-                  Ajouter une entreprise
+                  Ajouter une Companie
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Créer une nouvelle entreprise</DialogTitle>
+                  <DialogTitle>Créer une nouvelle Companie</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleCreateCompany} className="space-y-4">
                   <div>
@@ -246,7 +246,7 @@ export default function CompaniesPage() {
                     />
                   </div>
                   <Button type="submit" className="w-full">
-                    Créer l'entreprise
+                    Créer l'Companie
                   </Button>
                 </form>
               </DialogContent>
@@ -260,7 +260,7 @@ export default function CompaniesPage() {
               columns={columns}
               data={companies}
               searchKey="name"
-              searchPlaceholder="Rechercher des entreprises..."
+              searchPlaceholder="Rechercher des Companies..."
             />
           )}
         </div>

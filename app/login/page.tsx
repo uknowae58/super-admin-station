@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { MagicCard } from "@/components/magicui/magic-card"
 import { Loader2, Shield } from "lucide-react"
 import { authManager, LoginCredentials } from "@/lib/auth"
+import { useTheme } from "next-themes"
 
 export default function LoginPage() {
   const [credentials, setCredentials] = useState<LoginCredentials>({
@@ -18,6 +19,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const router = useRouter()
+  const { theme } = useTheme()
 
   useEffect(() => {
     // Redirect if already authenticated
@@ -53,7 +55,9 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
-      <MagicCard className="w-full max-w-md">
+      <MagicCard gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
+          className="p-0"
+        >
         <div className="p-8">
           <div className="text-center mb-8">
             <div className="mx-auto w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-4">
