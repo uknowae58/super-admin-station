@@ -72,7 +72,8 @@ class AuthManager {
 
   // Login method
   async login(credentials: LoginCredentials): Promise<AuthTokens> {
-    const response = await fetch('http://localhost:3000/api/auth/login', {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api'
+    const response = await fetch(`${apiUrl}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -93,14 +94,15 @@ class AuthManager {
   // Refresh token method
   async refreshAccessToken(): Promise<AuthTokens | null> {
     const refreshToken = this.getRefreshToken()
-    
+
     if (!refreshToken) {
       this.clearTokens()
       return null
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/auth/refresh-token', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api'
+      const response = await fetch(`${apiUrl}/auth/refresh-token`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${refreshToken}`,
