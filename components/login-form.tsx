@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { authManager, LoginCredentials } from '@/lib/auth'
 import { useAuth } from '@/components/auth-provider'
+import { MagicCard } from "@/components/magicui/magic-card"
+import { useTheme } from "next-themes"
 
 export function LoginForm() {
   const [credentials, setCredentials] = useState<LoginCredentials>({
@@ -16,6 +18,8 @@ export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
+  const { theme } = useTheme()
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,6 +38,10 @@ export function LoginForm() {
 
   return (
     <Card className="w-full max-w-md">
+      <MagicCard
+          gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
+          className="p-0"
+        ></MagicCard>
       <CardHeader>
         <CardTitle>Connexion</CardTitle>
         <CardDescription>
