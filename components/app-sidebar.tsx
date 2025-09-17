@@ -28,7 +28,7 @@ const data = {
       url: "#",
       items: [
         {
-          title: "Entreprises",
+          title: "Compagnies",
           url: "/protected/companies",
         },
 

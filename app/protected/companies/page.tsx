@@ -127,7 +127,7 @@ const columns: ColumnDef<Company>[] = [
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(company.id)
-                  toast.success("ID de l'Companie copié !", {
+                  toast.success("ID de l'Compagnie copié !", {
                     duration: 2000,
                   })
                 } catch (error) {
@@ -137,11 +137,11 @@ const columns: ColumnDef<Company>[] = [
                 }
               }}
             >
-              Copier l'ID de l'Companie
+              Copier l'ID de l'Compagnie
             </DropdownMenuItem>
-            <DropdownMenuItem>Modifier l'Companie</DropdownMenuItem>
+            <DropdownMenuItem>Modifier l'Compagnie</DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">
-              Supprimer l'Companie
+              Supprimer l'Compagnie
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -150,22 +150,22 @@ const columns: ColumnDef<Company>[] = [
   },
 ]
 
-export default function CompaniesPage() {
-  const [companies, setCompanies] = useState<Company[]>([])
+export default function CompagniesPage() {
+  const [Compagnies, setCompagnies] = useState<Company[]>([])
   const [loading, setLoading] = useState(true)
   const [dialogOpen, setDialogOpen] = useState(false)
   const [newCompany, setNewCompany] = useState({ name: "", email: "" })
 
   useEffect(() => {
-    fetchCompanies()
+    fetchCompagnies()
   }, [])
 
-  const fetchCompanies = async () => {
+  const fetchCompagnies = async () => {
     try {
       const data = await apiClient.getCompanies()
-      setCompanies(data)
+      setCompagnies(data)
     } catch (error) {
-      console.error("Error fetching companies:", error)
+      console.error("Error fetching Compagnies:", error)
     } finally {
       setLoading(false)
     }
@@ -175,7 +175,7 @@ export default function CompaniesPage() {
     e.preventDefault()
     try {
       await apiClient.createCompany(newCompany)
-      await fetchCompanies()
+      await fetchCompagnies()
       setNewCompany({ name: "", email: "" })
       setDialogOpen(false)
     } catch (error) {
@@ -202,24 +202,24 @@ export default function CompaniesPage() {
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Companies</BreadcrumbPage>
+                <BreadcrumbPage>Compagnies</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold">Companies</h1>
+            <h1 className="text-3xl font-bold">Compagnies</h1>
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <Button>
                   <Plus className="mr-2 h-4 w-4" />
-                  Ajouter une Companie
+                  Ajouter une Compagnie
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Créer une nouvelle Companie</DialogTitle>
+                  <DialogTitle>Créer une nouvelle Compagnie</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleCreateCompany} className="space-y-4">
                   <div>
@@ -246,7 +246,7 @@ export default function CompaniesPage() {
                     />
                   </div>
                   <Button type="submit" className="w-full">
-                    Créer l'Companie
+                    Créer l'Compagnie
                   </Button>
                 </form>
               </DialogContent>
@@ -258,9 +258,9 @@ export default function CompaniesPage() {
           ) : (
             <DataTable
               columns={columns}
-              data={companies}
+              data={Compagnies}
               searchKey="name"
-              searchPlaceholder="Rechercher des Companies..."
+              searchPlaceholder="Rechercher des Compagnies..."
             />
           )}
         </div>
