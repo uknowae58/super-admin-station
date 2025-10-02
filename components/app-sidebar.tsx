@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { LogOut, User } from "lucide-react"
+import { LogOut, User, Database } from "lucide-react"
 
 import { SearchForm } from "@/components/search-form"
 import { VersionSwitcher } from "@/components/version-switcher"
@@ -31,7 +31,11 @@ const data = {
           title: "Compagnies",
           url: "/protected/companies",
         },
-
+        {
+          title: "Base de données",
+          url: "/protected/studio",
+          icon: Database,
+        },
       ],
     },
   ],
